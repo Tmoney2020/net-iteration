@@ -26,7 +26,9 @@ namespace DotnetIteration
         //
         public static IEnumerable<string> Yelling(List<string> words)
         {
-            throw new System.NotImplementedException();
+            var toYell = words.Select(yelling => yelling.ToUpper());
+
+            return toYell;
         }
 
 
@@ -34,10 +36,19 @@ namespace DotnetIteration
         // 2) Complete the method named `Double` that takes an list of
         //    numbers as an argument and returns a new list with all
         //    the numbers multiplied by 2.
-        // 
+
+
+        // P - We want to take in a list of numbers and return that list but with all the numbers doubled 
+        // E - List 1 [1, 2, 3,] and we want it returned as List 2 [2, 4, 6]
+        // D - We have a List of numbers [1, 2, 2] and we are returning a list of numbers 
+        // A - Step 1 create a list of numbers 
+        //      step 2 individually go through each number and multipy it by 2 
+        //      step 3 put those numbers back into a list 
         public static IEnumerable<int> Double(List<int> numbers)
         {
-            throw new System.NotImplementedException();
+            var doubleTheNumbers = numbers.Select(number => number * 2);
+
+            return doubleTheNumbers;
         }
 
 
@@ -46,10 +57,19 @@ namespace DotnetIteration
         //    strings as an argument and returns a new list with each
         //    string suffixed with " is at index X" where X is the index
         //    of the element.
-        // 
+
+
+        // P - We want to take in a list of strings and return a list of strings with the index of each element of the string. 
+        // E - String 1 = [Trent, Gavin, Kento] and we want the new string to be [Trent is at index [0], Gavin is at index[1], Kento is at index [2]]
+        // D - Inital List, Final list, index number, 
+        // A - Step 1 find out the index of where each element is on the list. 
+        //      Step 2. create a list that adds "is at index X to each element of the list 
+        //      step 3. print out the list
         public static IEnumerable<string> StringyIndexes(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var indexString = data.Select((data, indexOfWord) => $"{data} is at index {indexOfWord}");
+
+            return indexString;
         }
 
 
@@ -59,7 +79,9 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            var evenNumbers = data.Where(data => (data % 2 == 0));
+
+            return evenNumbers;
         }
 
 
@@ -70,7 +92,9 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            var evenIndex = data.Where((data, indexOfData) => indexOfData % 2 == 0);
+
+            return evenIndex;
         }
 
 
@@ -78,6 +102,23 @@ namespace DotnetIteration
         // 6) Complete the method BestMoviesOfTheYear that accepts an list of
         //    movie objects AND a year and returns the names of movies that are
         //    from that year AND have a score more than 90.
+
+
+
+
+        //P - The problem is we have a list of a bunch of objects that are movies.
+        // IN the movie they have a name, year, and score. We want to return all the movies that 
+        // are from a certain year and have a score of at least 90
+
+        //E - Movie 1: 
+        //            Name: titanic 
+        //            Year: 2017
+        //            score 90
+        //     Movie 2: 
+        //              Name: Sleepless in Seattle 
+        //              Year: 1975
+        //              score: 50
+        //  Return Titanic 
         // 
         // A movie object looks like this:
         // 
@@ -89,7 +130,9 @@ namespace DotnetIteration
         // 
         public static IEnumerable<string> BestMovieOfTheYear(List<Movie> data, int year)
         {
-            throw new System.NotImplementedException();
+            return data.Where(movie => movie.Year == year && movie.Score > 90).Select(movie => movie.Name);
+
+            // var theOldMovies = movies.Where(movie => movie.ReleasedDate.Year < 1965);
         }
 
 
@@ -99,7 +142,9 @@ namespace DotnetIteration
         // 
         public static bool EveryoneIsOdd(List<int> data)
         {
-            throw new System.NotImplementedException();
+            var oddNumbers = data.All(data => (data % 2 == 1));
+
+            return oddNumbers;
         }
 
 
@@ -110,7 +155,9 @@ namespace DotnetIteration
         // 
         public static string FindTheNeedle(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var titles = data.Single(data => data.Contains("needle"));
+
+            return titles;
         }
 
 
@@ -121,7 +168,10 @@ namespace DotnetIteration
         // 
         public static int FindTheNeedleIndex(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var needleFound = data.FindIndex(data => data.Contains("needle"));
+
+            return needleFound;
+
         }
 
 
@@ -132,7 +182,9 @@ namespace DotnetIteration
         // 
         public static bool SomeoneToLove(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var foundLove = data.Any(data => data.Count() == 4);
+
+            return foundLove;
         }
     }
 }
